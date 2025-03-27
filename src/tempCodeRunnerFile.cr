@@ -1,3 +1,5 @@
-2).each do |j|
-    right_array[j] = arr[mid + j + 1]
-  end
+
+
+# puts random_numbers
+# puts merge_sort(random_numbers)
+# puts random_numbers

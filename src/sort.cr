@@ -64,23 +64,15 @@ def merge_sort(arr : Array, left : Int32 = 0, right : Int32 = arr.size - 1)
   merge(arr, left, mid, right)
 end
 
-def time_sort(arr, sort : Proc)
+def time_sort(arr, sort : Proc = ->bubble_sort)
   start = Time.utc
   _ = sort.call(arr)
   finish = Time.utc
   return finish - start
 end
 
-# puts time_sort(rand(StaticArray(Int8, 100)))
-# arr = [1, 5, 2, 7, 3]
-random_numbers = Array(Int32).new(10) { rand(1...100) }
+random_numbers = Array(Int32).new(10000) { rand(1...100) }
+random_numbers2 = random_numbers
 
-puts random_numbers
-puts merge_sort(random_numbers)
-puts random_numbers
-
-
-# puts arr.size
-# merge_sort(arr, 0, arr.size - 1)
-# proc = ->bubble_sort(Array(Int32))
-# puts time_sort(arr, proc)
+puts time_sort(random_numbers, ->bubble_sort(Array(Int32)))
+puts time_sort(random_numbers2, ->merge_sort(Array(Int32)))
