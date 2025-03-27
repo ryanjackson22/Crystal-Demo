@@ -37,11 +37,15 @@ def merge_sort(arr)
     result.concat(left).concat(right)
   end
 
-def time_sort(arr)
-    start = Time.now()
-    _ = bubble_sort(arr)
-    finish = Time.now()
+def time_sort(arr, sort_method)
+    start = Time.now
+    _ = sort_method.call(arr)
+    finish = Time.now
     finish - start
-end
+  end
   
-puts time_sort(1000.times.map { rand(-128..127)})
+  random_numbers = 1000000.times.map { rand(1...100) }
+  random_numbers2 = random_numbers.dup
+  
+#   puts time_sort(random_numbers, method(:bubble_sort))
+  puts time_sort(random_numbers2, method(:merge_sort))
