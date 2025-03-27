@@ -1,4 +1,4 @@
-def sort_array(arr)
+def bubble_sort(arr)
     (0...arr.size - 1).each do |n|
         swapped = false
         (0...arr.size - n - 1).each do |i|
@@ -14,10 +14,9 @@ end
 
 def time_sort(arr)
     start = Time.now()
-    _ = sort_array(arr)
+    _ = bubble_sort(arr)
     finish = Time.now()
     finish - start
-    
 end
   
 puts time_sort(1000.times.map { rand(-128..127)})
