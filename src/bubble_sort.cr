@@ -1,4 +1,4 @@
-def sort_array(arr)
+def bubble_sort(arr)
     (0...arr.size - 1).each do |n|
       swapped = false
       (0...arr.size - n - 1).each do |i|
@@ -14,7 +14,7 @@ def sort_array(arr)
 
 def time_sort(arr)
   start = Time.utc
-  _ = sort_array(arr)
+  _ = bubble_sort(arr)
   finish = Time.utc
   return finish - start
 end
