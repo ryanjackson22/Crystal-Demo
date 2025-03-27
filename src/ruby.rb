@@ -12,6 +12,6 @@ def sort_array(arr)
     arr
   end
   
-  ary = [4, 8, 10, 7, 2, 3, 9]
+  ary = 100.times.map { rand(-128..127)}
   puts ary.inspect
   puts sort_array(ary).inspect
