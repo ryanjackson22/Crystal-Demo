@@ -55,10 +55,8 @@ def merge(arr : Array, left : Int32, mid : Int32, right : Int32)
   end
 end
 
-def merge_sort(arr : Array, left : Int32, right : Int32)
-  if left >= right 
-    return
-  end
+def merge_sort(arr : Array, left : Int32 = 0, right : Int32 = arr.size - 1)
+  return if left >= right 
   
   mid = left + (right - left) // 2
   merge_sort(arr, left, mid)
@@ -74,8 +72,15 @@ def time_sort(arr, sort : Proc)
 end
 
 # puts time_sort(rand(StaticArray(Int8, 100)))
-arr = [1, 5, 2, 7, 3]
+# arr = [1, 5, 2, 7, 3]
+random_numbers = Array(Int32).new(10) { rand(1...100) }
+
+puts random_numbers
+puts merge_sort(random_numbers)
+puts random_numbers
+
+
 # puts arr.size
 # merge_sort(arr, 0, arr.size - 1)
-proc = ->bubble_sort(Array(Int32))
-puts time_sort(arr, proc)
+# proc = ->bubble_sort(Array(Int32))
+# puts time_sort(arr, proc)
