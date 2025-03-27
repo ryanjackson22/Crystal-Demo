@@ -1,17 +1,23 @@
 def sort_array(arr)
     (0...arr.size - 1).each do |n|
-      swapped = false
-      (0...arr.size - n - 1).each do |i|
-        if arr[i] > arr[i + 1]
-          arr[i], arr[i + 1] = arr[i + 1], arr[i]
-          swapped = true
+        swapped = false
+        (0...arr.size - n - 1).each do |i|
+            if arr[i] > arr[i + 1]
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = true
+            end
         end
-      end
-      break unless swapped
+        break unless swapped
     end
     arr
-  end
+end
+
+def time_sort(arr)
+    start = Time.now()
+    _ = sort_array(arr)
+    finish = Time.now()
+    finish - start
+    
+end
   
-  ary = 100.times.map { rand(-128..127)}
-  puts ary.inspect
-  puts sort_array(ary).inspect
+puts time_sort(1000.times.map { rand(-128..127)})
