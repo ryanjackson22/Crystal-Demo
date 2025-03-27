@@ -12,6 +12,11 @@ def sort_array(arr)
     return arr
   end
 
-ary = rand(StaticArray(Int8, 100))
-puts ary.to_s
-puts sort_array(ary).to_s
+def time_sort(arr)
+  start = Time.utc
+  _ = sort_array(arr)
+  finish = Time.utc
+  return finish - start
+end
+
+puts time_sort(rand(StaticArray(Int8, 100)))
