@@ -12,7 +12,6 @@ def sort_array(arr)
     return arr
   end
 
-
-ary = [4, 8, 10, 7, 2, 3, 9]
+ary = rand(StaticArray(Int8, 100))
 puts ary.to_s
 puts sort_array(ary).to_s
