@@ -1,5 +1,11 @@
+sample_size = 10000
+
 macro current_time 
   Time.utc
+end
+
+macro create_sample
+  Array(Int32).new(sample_size) { rand(-1000..1000) }
 end
 
 alias SizeT = LibC::SizeT
@@ -78,26 +84,23 @@ def merge_sort(arr : Array, left : Int32 = 0, right : Int32 = arr.size - 1)
   merge(arr, left, mid, right)
 end
 
-def time_sort(arr, sort : Proc = ->bubble_sort)
+def time_sort(arr, sort : Proc)
   start = current_time
   _ = sort.call(arr)
   finish = current_time
   return finish - start
 end
 
-random_numbers = Array(Int32).new(500000) { rand(1..100) }
-random_numbers2 = random_numbers
-
-# puts time_sort(random_numbers, ->bubble_sort(Array(Int32)))
-puts time_sort(random_numbers, ->merge_sort(Array(Int32)))
-
+random_sample = create_sample
 start = current_time
 CBinding.qsort(
-  random_numbers2,
-  random_numbers2.size,
+  random_sample,
+  random_sample.size,
   sizeof(Int32),
   ->(a : Void*, b : Void*) { compare(a, b) }
 )
 finish = current_time
 
-puts finish - start
+puts "Bubble-sort Performance: #{time_sort(create_sample, ->bubble_sort(Array(Int32)))}"
+puts "Merge Sort Performance: #{time_sort(create_sample, ->merge_sort(Array(Int32)))}"
+puts "Cbind-qsort Performance: #{finish - start}"

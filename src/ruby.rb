@@ -1,3 +1,5 @@
+sample_size = 10000
+
 def bubble_sort(arr)
     (0...arr.size - 1).each do |n|
         swapped = false
@@ -62,8 +64,8 @@ def time_sort(arr, sort_method)
     finish - start
   end
   
-  random_numbers = 500000.times.map { rand(1...100) }
+  random_numbers = sample_size.times.map { rand(1...100) }
   random_numbers2 = random_numbers.dup
   
-#   puts time_sort(random_numbers, method(:bubble_sort))
   puts time_sort(random_numbers2, method(:merge_sort))
+  puts time_sort(random_numbers, method(:bubble_sort))
