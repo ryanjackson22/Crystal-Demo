@@ -14,6 +14,8 @@ def bubble_sort(arr)
     arr
 end
 
+# Consulted an AI model in porting this 
+# mergesort implementation into Ruby
 def merge(arr, left, mid, right)
     n1 = mid - left + 1
     n2 = right - mid
