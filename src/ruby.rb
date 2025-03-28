@@ -12,31 +12,6 @@ def bubble_sort(arr)
     arr
 end
 
-# def merge_sort(arr)
-#     return arr if arr.size <= 1
-  
-#     mid = arr.size / 2
-#     left_half = arr.take(mid)
-#     right_half = arr.drop(mid)
-  
-#     left_half = merge_sort(left_half)
-#     right_half = merge_sort(right_half)
-  
-#     merge(left_half, right_half)
-#   end
-  
-#   def merge(left, right)
-#     result = []
-#     until left.empty? || right.empty?
-#       if left.first <= right.first
-#         result << left.shift
-#       else
-#         result << right.shift
-#       end
-#     end
-#     result.concat(left).concat(right)
-#   end
-
 def merge(arr, left, mid, right)
     n1 = mid - left + 1
     n2 = right - mid
